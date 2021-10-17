@@ -1,0 +1,60 @@
+{% extends 'app.html' %}
+{% block container %}
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="header">
+                <span class="header-text" > Todo-App </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row justify-content-center mt-2">
+        <div class="col-md-7 shadow  m-4 p-4 ">
+            <ol class="list-group list-group-numbered">
+                {% for task in tasks %}
+                    <ul class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                            <div class="fw-bold">{{task.name}}</div>
+                            Date : {{task.date}}
+                        </div>
+                        <a href="{% url 'delete' task.id %}" class="btn btn-danger m-2" >delete</a>
+                        <a href="{% url 'update' task.id %}" class="btn btn-warning m-2" >update</a>
+                    </ul>
+            
+                {% endfor %}
+            </ol>
+        </div>
+        <div class="col-md-4 shadow  m-4 p-4">
+            <form method="post" class="">
+                {% csrf_token %}
+                <div class="mb-3" >
+                    <label for="" class="form-label">Task Name</label>
+                    <input type="text" placeholder="Name" name="name" required="required" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="" class="form-label">Priority</label>
+                    <input type="number" placeholder="Priority" name="priority" required="required" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="" class="form-label">Date</label>
+                    <input type="date" placeholder="Date" name="date" required="required" class="form-control">
+                </div>
+                <button type="submit" name="" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+    
+        
+        
+        
+    
+
+{% endblock %}

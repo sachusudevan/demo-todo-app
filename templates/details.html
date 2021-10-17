@@ -1,0 +1,41 @@
+{% extends 'app.html' %}
+{% block container %}
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="header">
+                <span class="header-text" > Todo-App </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row justify-content-center mt-2">
+        <div class="col-md-12 shadow  m-4 p-4 ">
+            <ol class="list-group list-group-numbered">
+                <ul class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">{{task.name}}</div>
+                        Date : {{task.date}}
+                    </div>
+                    <a href="{% url 'cls_delete' task.id %}" class="btn btn-danger m-2" >delete</a>
+                    <a href="{% url 'cls_update' task.id %}" class="btn btn-warning m-2" >update</a>
+                </ul>
+            
+            </ol>
+        </div>
+        
+    </div>
+</div>
+
+    
+        
+        
+        
+    
+
+{% endblock %}
